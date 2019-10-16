@@ -4,12 +4,16 @@ import UIKit
 
 // a. Define an enumeration called iOSDeviceType with member values iPhone, iPad, iWatch. Create a variable called myiPad and assign it to .iPad.
 
-// Your code here
+enum iOSDeviceType {
+    case iPhone
+    case iPad
+    case iWatch
+}
 
 // Uncomment the lines below to test your solution
 
-//let myiPad = iOSDeviceType.iPad
-//assert(myiPad == .iPad)
+let myiPad = iOSDeviceType.iPad
+assert(myiPad == .iPad)
 
 // b. Adjust your code above so that iPhone and iPad have associated values of type String which represents the model number.  Create an instance of a .iPhone("8+") and assign it to a variable called myPhone
 
