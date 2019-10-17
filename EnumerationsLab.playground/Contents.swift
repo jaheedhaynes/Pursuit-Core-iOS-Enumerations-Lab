@@ -43,7 +43,7 @@ enum Step {
     case right
 }
 
-// Your function here
+//func getPosition(startingAt: [Int], afterSteps:)
 
 // Uncomment the lines below to test your solution
 
@@ -63,24 +63,55 @@ enum Coin: Int {
     case nickle = 5
     case dime = 10
     case quarter = 25
+    
+    
 }
 
 // Your function here
 
+func getTotalValue(from tuples: [(Int, Coin)]) -> Int {
+    var totalNumberOfCents = 0   // this will hold the total number of cents
+
+    for tuple in tuples {
+        switch tuple.1 { // .1 is the position of "Coin" in the tuple array in the func getTotalValue
+        case .penny:
+            totalNumberOfCents += Coin.penny.rawValue * tuple.0
+        case .nickle:
+            totalNumberOfCents += Coin.nickle.rawValue * tuple.0
+        case .dime:
+            totalNumberOfCents += Coin.dime.rawValue * tuple.0
+        case .quarter:
+            totalNumberOfCents += Coin.quarter.rawValue * tuple.0
+        }
+        
+    }
+return totalNumberOfCents
+}
+
+// or (more optimized
+
+//func getTotalValue (from array: [(Int, Coin)]) -> Int {
+//    var centCount = 0
+//    for tuple in array {
+//        centCount += tuple.0 * (tuple.1).rawValue
+//    }
+//    return centCount
+//}
+
 // Uncomment the lines below to test your solution
 
-//let coinArr: [(Int, Coin)] = [
-//    (10, .penny),
-//    (15, .nickle),
-//    (3, .quarter),
-//    (20, .penny),
-//    (3, .dime),
-//    (7, .quarter)
-//]
-//
-//let expectedTotal = 385
-//let total = getTotalValue(from: coinArr)
-//assert(total == expectedTotal, "Was expecting \(expectedTotal), but got \(total)")
+let coinArr: [(Int, Coin)] = [
+    (10, .penny),
+    (15, .nickle),
+    (3, .quarter),
+    (20, .penny),
+    (3, .dime),
+    (7, .quarter)
+]
+
+let expectedTotal = 385
+let total = getTotalValue(from: coinArr)
+assert(total == expectedTotal, "Was expecting \(expectedTotal), but got \(total)")
 
 // Question Four
 
@@ -107,7 +138,17 @@ enum Coin: Int {
 //
 //Rock beats scissors, paper beats rock, scissor beats paper
 
-// Your code here
+enum HandShape {
+    case rock
+    case paper
+    case scissor
+}
+
+enum MatchResult {
+    case win
+    case draw
+    case lose
+}
 
 // Uncomment the lines below to test your solution
 
